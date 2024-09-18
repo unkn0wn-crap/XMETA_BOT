@@ -30,7 +30,7 @@ async def start(client, message):
         id = None
 
     loading_sticker_message = await message.reply_sticker("CAACAgIAAxkBAALmzGXSSt3ppnOsSl_spnAP8wHC26jpAAJEGQACCOHZSVKp6_XqghKoHgQ")
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     await loading_sticker_message.delete()
     
     text = f"""Oᴋ Sᴏ ᴛʜɪs ɪs ᴍᴇᴛᴀᴅᴀᴛᴀ + ғɪʟᴇ ʀᴇɴᴀᴍɪɴɢ ʙᴏᴛ
@@ -86,9 +86,9 @@ async def send_doc(client, message):
     c_time = time.time()
 
     if user_type == "Free":
-        LIMIT = 120
+        LIMIT = 2
     else:
-        LIMIT = 10
+        LIMIT = 3
     then = used_date + LIMIT
     left = round(then - c_time)
     conversion = datetime.timedelta(seconds=left)
@@ -102,7 +102,7 @@ async def send_doc(client, message):
         dcid = FileId.decode(file.file_id).dc_id
         filename = file.file_name
         file_id = file.file_id
-        value = 2147483648
+        value = 10737418240
         used_ = find_one(message.from_user.id)
         used = used_["used_limit"]
         limit = used_["uploadlimit"]
@@ -129,7 +129,7 @@ async def send_doc(client, message):
                     total_rename(int(botid), prrename)
                     total_size(int(botid), prsize, file.file_size)
                 else:
-                    uploadlimit(message.from_user.id, 2147483648)
+                    uploadlimit(message.from_user.id, 10737418240)
                     usertype(message.from_user.id, "Free")
 
                     await message.reply_text(f'Your Plan Expired On {buy_date}', quote=True)
@@ -141,7 +141,7 @@ async def send_doc(client, message):
             if buy_date:
                 pre_check = check_expi(buy_date)
                 if pre_check == False:
-                    uploadlimit(message.from_user.id, 2147483648)
+                    uploadlimit(message.from_user.id, 10737418240)
                     usertype(message.from_user.id, "Free")
             
             filesize = humanize.naturalsize(file.file_size)

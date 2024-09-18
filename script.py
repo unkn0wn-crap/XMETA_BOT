@@ -16,10 +16,10 @@ class script(object):
 <b>⌥ /viewthumb - Use This Command To See Your Thumbnail</b>
 <b>⌥ /delthumb - Use This Command To Delete Your Thumbnail</b>"""
 
-    ABOUT_TXT = """<b>Fuck Yeah</b> {}
-<a href='https://python.org'>Python 3</a>
-<a href='https://pyrogram.org'>Pyrogram 2.0.106</a>
-<a href='https://www.kali.org/get-kali/#kali-platforms'>Linux Local Server Host</a>
+    ABOUT_TXT = """<b>Fuck Yeah</b>\n\n {}
+<a href='https://python.org'>Python 3</a>\n
+<a href='https://pyrogram.org'>Pyrogram 2.0.106</a>\n
+<a href='https://www.kali.org/get-kali/#kali-platforms'>Linux Local Server Host</a>\n
 <a href='https://t.me/ghost_kun'>ɢʜᴏsᴛ</a>"""
 
     DONATE_TXT = """
@@ -38,7 +38,12 @@ class script(object):
 
 
     METADATA_TXT = """<b><u>🖼️  HOW TO SET CUSTOM METADATA</u></b>
-
+<b> Just type /metadata then change the metadata according to urself </b>\n\n
+<u> Forward or send the anime file or other file here</u>\n
+• Then Bot will automatically detect the file
+• Bot will ask for your custom caption <i>(if u want to change) </i>
+• After that bot will ask whether u want that file in video or document format <b>(Select Document Format)</b>
+• Then wait for bot to download the file and upload...
 
 Report any bug on : @yukilogs
 """
