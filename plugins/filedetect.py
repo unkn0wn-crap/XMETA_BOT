@@ -7,11 +7,20 @@ from pyrogram.types import ForceReply
 async def refunc(client, message):
     reply_message = message.reply_to_message
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):
-        new_name = message.text 
-        await message.delete() 
+        new_name = message.text
+        await message.delete()
         msg = await client.get_messages(message.chat.id, reply_message.id)
         file = msg.reply_to_message
-        media = getattr(file, file.media.value)
+
+        # Check the type of media and extract the proper media attribute
+        if file.document:
+            media = file.document
+        elif file.video:
+            media = file.video
+        elif file.audio:
+            media = file.audio
+        else:
+            return  # No supported media, exit the function
 
         # Add file extension if not provided
         if not "." in new_name:
@@ -25,23 +34,25 @@ async def refunc(client, message):
         # Automatically process the file as a document
         if file.media in [MessageMediaType.VIDEO, MessageMediaType.DOCUMENT]:
             # Automatically selecting document
-            await process_document(client, file, new_name)
+            await process_document(client, media.file_id, new_name)
         elif file.media == MessageMediaType.AUDIO:
-            await process_audio(client, file, new_name)
+            await process_audio(client, media.file_id, new_name)
 
-async def process_document(client, file, new_name):
+
+async def process_document(client, file_id, new_name):
     # Code to handle document upload
     await client.send_document(
-        chat_id=file.chat.id,
-        document=file.file_id,
+        chat_id=client.chat.id,
+        document=file_id,
         file_name=new_name
     )
     # You can add other processing logic here as needed
 
-async def process_audio(client, file, new_name):
+
+async def process_audio(client, file_id, new_name):
     # Code to handle audio upload if needed
     await client.send_audio(
-        chat_id=file.chat.id,
-        audio=file.file_id,
+        chat_id=client.chat.id,
+        audio=file_id,
         file_name=new_name
     )
