@@ -63,8 +63,8 @@ async def resetpower(bot, message):
 async def vip1(bot,update):
     id = update.message.reply_to_message.text.split("/addpremium")
     user_id = id[1].replace(" ", "")
-    inlimit  = 21474836500
-    uploadlimit(int(user_id),21474836500)
+    inlimit  = 107374182400
+    uploadlimit(int(user_id),107374182400)
     usertype(int(user_id),"Bᴀsɪᴄ")
     addpre(int(user_id))
     await update.message.edit("Aᴅᴅᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ Tᴏ Pʀᴇᴍɪᴜᴍ Uᴘʟᴏᴀᴅ Lɪᴍɪᴛ 20 GB")

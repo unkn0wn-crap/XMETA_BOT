@@ -36,8 +36,9 @@ class script(object):
 <b>⌥ /addpremium - Use This Command To Add Premium To Users</b>
 <b>⌥ /restart - Use This Command To Cancel All Process And Restart The Bot</b>"""
 
+    METADATA_TXT = """ <b> Sned ur metadata </b>"""
 
-    METADATA_TXT = """<b><u>🖼️  HOW TO SET CUSTOM METADATA</u></b>
+    METADATA_HELP = """<b><u>🖼️  HOW TO SET CUSTOM METADATA</u></b>
 <b> Just type /metadata then change the metadata according to urself </b>\n\n
 <u> Forward or send the anime file or other file here</u>\n
 • Then Bot will automatically detect the file
