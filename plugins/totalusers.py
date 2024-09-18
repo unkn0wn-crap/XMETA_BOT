@@ -19,10 +19,7 @@ async def users(client,message):
     id = str(getid())
     ids = id.split(',')
     
-    await message.reply_text(f"<b>Tᴏᴛᴀʟ Usᴇʀ :</b> {total_user()}\n\n<b>Tᴏᴛᴀʟ Rᴇɴᴀᴍᴇᴅ Fɪʟᴇ :</b> {total_rename}\n<b>Tᴏᴛᴀʟ Sɪᴢᴇ Rᴇɴᴀᴍᴇᴅ
- :</b> {humanbytes(int(total_size))}", quote=True, reply_markup= InlineKeyboardMarkup([
-        [InlineKeyboardButton("Close", callback_data="cancel")]])
-        )
+    await message.reply_text(f"<b>Tᴏᴛᴀʟ Usᴇʀ :</b> {total_user()}\n\n<b>Tᴏᴛᴀʟ Rᴇɴᴀᴍᴇᴅ Fɪʟᴇ :</b> {total_rename}\n<b>Tᴏᴛᴀʟ Sɪᴢᴇ Rᴇɴᴀᴍᴇᴅ:</b> {humanbytes(int(total_size))}", quote=True, reply_markup= InlineKeyboardMarkup([[InlineKeyboardButton("Close", callback_data="cancel")]]))
 	
     
     

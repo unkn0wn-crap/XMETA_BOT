@@ -100,7 +100,7 @@ async def vip3(bot,update):
 
 
 
-# CEASE POWER MODE @JISHUDEVELOPER
+# CEASE POWER MODE 
 @Client.on_callback_query(filters.regex('cp1'))
 async def cp1(bot,update):
     id = update.message.reply_to_message.text.split("/ceasepower")
@@ -128,7 +128,7 @@ async def cp2(bot,update):
 
 
 
-# RESET POWER MODE @JISHUDEVELOPER
+# RESET POWER MODE
 @Client.on_callback_query(filters.regex('dft'))
 async def dft(bot,update):
     id = update.message.reply_to_message.text.split("/resetpower")
