@@ -1,58 +1,34 @@
 from pyrogram import Client, filters
 from pyrogram.enums import MessageMediaType
-from pyrogram.types import ForceReply
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ForceReply
+
+
 
 
 @Client.on_message(filters.private & filters.reply)
 async def refunc(client, message):
     reply_message = message.reply_to_message
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):
-        new_name = message.text
-        await message.delete()
+        new_name = message.text 
+        await message.delete() 
         msg = await client.get_messages(message.chat.id, reply_message.id)
         file = msg.reply_to_message
-
-        # Check the type of media and extract the proper media attribute
-        if file.document:
-            media = file.document
-        elif file.video:
-            media = file.video
-        elif file.audio:
-            media = file.audio
-        else:
-            return  # No supported media, exit the function
-
-        # Add file extension if not provided
+        media = getattr(file, file.media.value)
         if not "." in new_name:
             if "." in media.file_name:
                 extn = media.file_name.rsplit('.', 1)[-1]
             else:
-                extn = "mkv"  # Default extension
+                extn = "mkv"
             new_name = new_name + "." + extn
         await reply_message.delete()
 
-        # Automatically process the file as a document
+        button = [[InlineKeyboardButton("📁 Document",callback_data = "upload_document")]]
         if file.media in [MessageMediaType.VIDEO, MessageMediaType.DOCUMENT]:
-            # Automatically selecting document
-            await process_document(client, message.chat.id, media.file_id, new_name)
+            button.append([InlineKeyboardButton("🎥 Video", callback_data = "upload_video")])
         elif file.media == MessageMediaType.AUDIO:
-            await process_audio(client, message.chat.id, media.file_id, new_name)
-
-
-async def process_document(client, chat_id, file_id, new_name):
-    # Code to handle document upload
-    await client.send_document(
-        chat_id=chat_id,
-        document=file_id,
-        file_name=new_name
-    )
-    # You can add other processing logic here as needed
-
-
-async def process_audio(client, chat_id, file_id, new_name):
-    # Code to handle audio upload if needed
-    await client.send_audio(
-        chat_id=chat_id,
-        audio=file_id,
-        file_name=new_name
-    )
+            button.append([InlineKeyboardButton("🎵 Audio", callback_data = "upload_audio")])
+        await message.reply(
+            text=f"**Select The Output File Type**\n\n**File Name :-** `{new_name}`",
+            reply_to_message_id=file.id,
+            reply_markup=InlineKeyboardMarkup(button)
+        )
