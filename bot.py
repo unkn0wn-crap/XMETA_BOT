@@ -13,13 +13,12 @@ bot = Client("ghost", bot_token=BOT_TOKEN, api_id=API_ID, api_hash=API_HASH, plu
 
 
 
-try:
-    if STRING_SESSION:
-        apps = [Client2, bot]
-        for app in apps:
-            app.start()
-        idle()
-        for app in apps:
-            app.stop()
-    else:
-        bot.run()
+if STRING_SESSION:
+    apps = [Client2,bot]
+    for app in apps:
+        app.start()
+    idle()
+    for app in apps:
+        app.stop()
+else:
+    bot.run()
