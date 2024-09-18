@@ -137,7 +137,7 @@ async def dft(bot,update):
     uploadlimit(int(user_id), 2147483652)
     usertype(int(user_id),"🆓 Free")
     addpre(int(user_id))
-    await update.message.edit("Daily Data Limit Has Been Reset Successfully.\n\nThis Account Has Default 2GB Remaining Capacity")ded")
+    await update.message.edit("Daily Data Limit Has Been Reset Successfully.\n\nThis Account Has Default 2GB Remaining Capacity")
     addpre(int(user_id))
     await update.message.edit("Added Successfully To Upload Limit 0GB")
     await bot.send_message(user_id, f"Hey {update.from_user.mention} \n\nYou Are Downgraded To Cease <b>Limit 0GB</b>. Check Your Plan Here /myplan \n")
