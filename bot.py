@@ -23,5 +23,3 @@ try:
             app.stop()
     else:
         bot.run()
-except Exception as e:
-    print(f"An error occurred: {e}")
