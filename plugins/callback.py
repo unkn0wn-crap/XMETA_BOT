@@ -39,13 +39,13 @@ async def admincm(bot,message):
 @Client.on_callback_query(filters.regex('help'))
 async def help(bot,update):
     text = script.HELP_TXT.format(update.from_user.mention)
-    keybord = InlineKeyboardMarkup([ 
+    keybord = InlineKeyboardMarkup([
                     [InlineKeyboardButton('Tʜᴜᴍʙɴᴀɪʟ', callback_data='thumbnail'),
                     InlineKeyboardButton('Cᴀᴘᴛɪᴏɴ', callback_data='caption')],
                     [InlineKeyboardButton('Hᴏᴍᴇ', callback_data='home'),
                     [InlineKeyboardButton('ᴍᴇᴛᴀᴅᴀᴛᴀ',callback_data='metadata'),
                     InlineKeyboardButton('Dᴏɴᴀᴛᴇ', callback_data='donate')]
-                   ])
+                   ]])
     await update.message.edit(text = text,reply_markup = keybord)
 
 
